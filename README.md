@@ -1,2 +1,2 @@
-# angular_weather_app
+# Angular Weather App
 Demo app to check weather based on Angular JS
