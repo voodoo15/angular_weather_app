@@ -1,4 +1,8 @@
+// MODULES
+
 var weather = angular.module('weather', ['ngRoute', 'ngResource']);
+
+// ROUTES
 
 weather.config(['$routeProvider', '$locationProvider', function ($routeProvider,  $locationProvider) {
 
@@ -16,10 +20,18 @@ weather.config(['$routeProvider', '$locationProvider', function ($routeProvider,
 
 }]);
 
-weather.controller('homeController', ['$scope', '$resource', function($scope, $resource) {
+// SERVICES
+
+weather.service('searchCityService', function() {
+
+});
+
+// CONTROLLERS
+
+weather.controller('homeController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
 
 }]);
 
-weather.controller('forecastController', ['$scope', '$resource', function($scope, $resource) {
+weather.controller('forecastController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
 
 }]);
