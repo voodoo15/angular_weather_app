@@ -24,14 +24,28 @@ weather.config(['$routeProvider', '$locationProvider', function ($routeProvider,
 
 weather.service('searchCityService', function() {
 
+  this.city = 'Toronto, ON';
+
 });
 
 // CONTROLLERS
 
 weather.controller('homeController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
 
+  $scope.$watch('city', function() {
+
+    $scope.city = searchCityService.city;
+
+  });
+
 }]);
 
 weather.controller('forecastController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
+
+  $scope.$watch('city', function() {
+
+    $scope.city = searchCityService.city;
+
+  });
 
 }]);
