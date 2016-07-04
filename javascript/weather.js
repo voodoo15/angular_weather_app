@@ -32,9 +32,11 @@ weather.service('searchCityService', function() {
 
 weather.controller('homeController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
 
+  $scope.city = searchCityService.city;
+
   $scope.$watch('city', function() {
 
-    $scope.city = searchCityService.city;
+    searchCityService.city = $scope.city;
 
   });
 
