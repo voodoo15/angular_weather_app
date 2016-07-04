@@ -72,4 +72,50 @@ weather.controller('forecastController', ['$scope', '$resource', '$routeParams',
 
   }
 
+  $scope.convertWeatherId = function(code) {
+
+    var response;
+
+    if (code >= 200 && code <= 299 ) {
+
+      response = 'thunderstorm';
+
+    } else if (code >= 300 && code <= 399) {
+
+      response = 'drizzle';
+
+    } else if (code >= 500 && code <= 501) {
+
+      response = 'light_rain';
+
+    } else if (code >= 502 && code <= 599) {
+
+      response = 'rain';
+
+    } else if (code >= 600 && code <= 699) {
+
+      response = 'snow';
+
+    } else if (code === 800) {
+
+      response = 'sunny';
+
+    } else if (code >= 801 && code <= 899) {
+
+      response = 'cloudy';
+
+    } else if (code >= 700 && code <= 799 || code >= 900 && code <= 910) {
+
+      response = 'crap';
+
+    } else {
+
+      response = 'dunno';
+
+    };
+
+    return response;
+
+  };
+
 }]);

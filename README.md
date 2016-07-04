@@ -7,3 +7,4 @@ My Current Wishlist:
 
 1.  Need to add an error message if the city is not found.
 2.  Need to add a way to figure out the weather so I can change the weather image
+3.  Center the forecasts if it's 2 or 5 days somehow in bootstrap
