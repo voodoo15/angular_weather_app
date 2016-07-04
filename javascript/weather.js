@@ -4,7 +4,7 @@ var weather = angular.module('weather', ['ngRoute', 'ngResource']);
 
 // ROUTES
 
-weather.config(['$routeProvider', '$locationProvider', function ($routeProvider,  $locationProvider) {
+weather.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
 
   $routeProvider
 
@@ -14,6 +14,11 @@ weather.config(['$routeProvider', '$locationProvider', function ($routeProvider,
   })
 
   .when('/forecast', {
+    templateUrl: 'pages/forecast.html',
+    controller:  'forecastController'
+  })
+
+  .when('/forecast/:days', {
     templateUrl: 'pages/forecast.html',
     controller:  'forecastController'
   })
@@ -42,14 +47,28 @@ weather.controller('homeController', ['$scope', 'searchCityService', function($s
 
 }]);
 
-weather.controller('forecastController', ['$scope', '$resource', 'searchCityService', function($scope, $resource, searchCityService) {
+weather.controller('forecastController', ['$scope', '$resource', '$routeParams', 'searchCityService', function($scope, $resource, $routeParams, searchCityService) {
 
   $scope.city = searchCityService.city;
 
-  var weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast/daily?APPID=X', {callback: 'JSON_CALLBACK'}, {get: {method: 'JSONP'}});
+  $scope.days = $routeParams.days || 5;
 
-  $scope.weatherResult = weatherAPI.get({q: $scope.city, cnt: 5});
+  var weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast/daily?APPID=XXX', {callback: 'JSON_CALLBACK'}, {get: {method: 'JSONP'}});
 
-  console.log($scope.weatherResult)
+  $scope.weatherResult = weatherAPI.get({q: $scope.city, cnt: $scope.days});
+
+  console.log($scope.weatherResult);
+
+  $scope.convertToCelsius = function(degK) {
+
+    return Math.round(degK - 273.15);
+
+  };
+
+  $scope.convertToDate = function(dt) {
+
+    return new Date(dt * 1000);
+
+  }
 
 }]);

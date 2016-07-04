@@ -5,9 +5,9 @@
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">{{ weather.dt }}</h3>
+            <h3 class="panel-title">{{ convertToDate(weather.dt) | date: 'EEEE MMMM d, yyyy' }}</h3>
             <div class="panel-body">
-              Daytime temperature: {{ weather.temp.day }}
+              Daytime temperature: {{ convertToCelsius(weather.temp.day) }}&degC
             </div>
           </div>
         </div>
