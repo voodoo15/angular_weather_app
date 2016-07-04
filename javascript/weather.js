@@ -51,8 +51,9 @@ weather.controller('forecastController', ['$scope', '$resource', '$routeParams',
 
   $scope.city = searchCityService.city;
 
-  $scope.days = $routeParams.days || 5;
+  $scope.days = $routeParams.days || '5';
 
+  // Need to add an API ID for this app to access the site's API (replace where XXX)
   var weatherAPI = $resource('http://api.openweathermap.org/data/2.5/forecast/daily?APPID=XXX', {callback: 'JSON_CALLBACK'}, {get: {method: 'JSONP'}});
 
   $scope.weatherResult = weatherAPI.get({q: $scope.city, cnt: $scope.days});

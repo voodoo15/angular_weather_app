@@ -1,14 +1,21 @@
 <h3>Forecast for {{ city }}</h3>
 
-<div ng-repeat="weather in weatherResult.list">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">{{ convertToDate(weather.dt) | date: 'EEEE MMMM d, yyyy' }}</h3>
-            <div class="panel-body">
-              Daytime temperature: {{ convertToCelsius(weather.temp.day) }}&degC
-            </div>
+Days: <a href="#/forecast/2" ng-class="{ 'bg-primary':days === '2' }">2</a> |
+      <a href="#/forecast/5" ng-class="{ 'bg-primary':days === '5' }">5</a> |
+      <a href="#/forecast/7" ng-class="{ 'bg-primary':days === '7' }">7</a>
+      <br /><br />
+
+<a href="#/">Back to Search</a><br /><br />
+
+
+<div class="row">
+  <div ng-repeat="weather in weatherResult.list">
+      <div class="col-md-2">
+        <div class="thumbnail">
+          <img src="images/weather.png" alt="weather" class="img-rounded">
+          <h3 class="caption">{{ convertToDate(weather.dt) | date: 'EEE MMM d, yyyy' }}</h3>
+          <div class="panel-body">
+            Temp: {{ convertToCelsius(weather.temp.day) }}&degC
           </div>
         </div>
       </div>
