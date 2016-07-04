@@ -8,20 +8,20 @@ weather.config(['$routeProvider', '$locationProvider', function ($routeProvider)
 
   $routeProvider
 
-  .when('/', {
-    templateUrl: 'pages/home.html',
-    controller:  'homeController'
-  })
+    .when('/', {
+      templateUrl: 'pages/home.html',
+      controller:  'homeController'
+    })
 
-  .when('/forecast', {
-    templateUrl: 'pages/forecast.html',
-    controller:  'forecastController'
-  })
+    .when('/forecast', {
+      templateUrl: 'pages/forecast.html',
+      controller:  'forecastController'
+    })
 
-  .when('/forecast/:days', {
-    templateUrl: 'pages/forecast.html',
-    controller:  'forecastController'
-  })
+    .when('/forecast/:days', {
+      templateUrl: 'pages/forecast.html',
+      controller:  'forecastController'
+    })
 
 }]);
 
@@ -119,3 +119,15 @@ weather.controller('forecastController', ['$scope', '$resource', '$routeParams',
   };
 
 }]);
+
+// DIRECTIVES
+
+weather.directive('dailyForecast', function() {
+
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/dailyForecast.html',
+    replace: true
+  }
+
+});

@@ -9,19 +9,6 @@ Days: <a href="#/forecast/2" ng-class="{ 'bg-primary':days === '2' }">2</a> |
 
 <div class="container-fluid">
   <div class="row">
-    <div ng-repeat="weather in weatherResult.list">
-      <div class="col-xs-12 col-md-2">
-        <div class="thumbnail">
-          <img src="images/{{ convertWeatherId(weather.weather[0].id) }}.png" alt="weather" class="img-rounded img-responsive">
-          <h3 class="caption">{{ convertToDate(weather.dt) | date: 'EEE MMM d, yyyy' }}</h3>
-          <div class="panel-body">
-            Description: {{ weather.weather[0].description }}<br />
-            Temp: {{ convertToCelsius(weather.temp.day) }}&degC<br />
-            <!-- ID: {{ weather.weather[0].id }}<br />
-            Type: {{ convertWeatherId(weather.weather[0].id) }} -->
-          </div>
-        </div>
-      </div>
-    </div>
+    <daily-forecast ng-repeat="weather in weatherResult.list"></daily-forecast>
   </div>
 </div>
